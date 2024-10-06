@@ -1,0 +1,161 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram name="Page-1" id="35pOb7N_zu7hcMkjtjjM">
+    <mxGraphModel dx="2219" dy="1071" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="_KPcWchUeQN-RAS9eL70-1" value="Пользователи" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="412" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-3" value="Слой пользовательского отображения" style="shape=folder;html=1;tabWidth=235;tabHeight=30;tabPosition=left;align=left;verticalAlign=top;spacingLeft=10;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="265" y="370" width="285" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-5" value="Интерфейс пользователя" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="280" y="430" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-7" value="Логика отображения данных" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="410" y="430" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=285;exitDy=165;exitPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-8" target="_KPcWchUeQN-RAS9eL70-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-8" value="Слой служебного отображения" style="shape=folder;html=1;tabWidth=205;tabHeight=30;tabPosition=left;align=left;verticalAlign=top;spacingLeft=10;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="590" y="370" width="285" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-9" value="Интерфейс пользователя" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="605" y="430" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-10" value="Логика отображения данных" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="735" y="430" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-11" value="Внешние системы" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="970" y="420" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-12" value="Слой управления ячейками" style="shape=folder;html=1;tabWidth=185;tabHeight=30;tabPosition=left;align=left;verticalAlign=top;spacingLeft=10;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="265" y="640" width="275" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-13" value="Логика получения данных" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="352.5" y="500" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-14" value="Логика получения данных" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="677.5" y="500" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-15" value="Обработка запросов" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="347.5" y="685" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-16" value="Распределение ячеек" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="280" y="780" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-17" value="Обновление состояний" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="410" y="780" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-19" value="Слой управления сотрудниками" style="shape=folder;html=1;tabWidth=195;tabHeight=30;tabPosition=left;align=left;verticalAlign=top;spacingLeft=10;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="595" y="640" width="275" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-20" value="Оперативная деятельность" style="shape=folder;html=1;tabWidth=195;tabHeight=30;tabPosition=left;align=left;verticalAlign=top;spacingLeft=10;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="930" y="640" width="220" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-21" value="Маршрутизация уведомлений" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="985" y="710" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-22" value="Безопастность" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="985" y="850" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-23" value="Очередность операций" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="985" y="990" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-24" value="Обработка запросов" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="677.5" y="685" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-25" value="Распределение сотрудников" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="620" y="780" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-26" value="Подтверждение перемещений" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="740" y="780" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-27" value="Слой управления данными" style="shape=folder;html=1;tabWidth=185;tabHeight=30;tabPosition=left;align=left;verticalAlign=top;spacingLeft=10;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="265" y="930" width="605" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-28" value="Достуап к данным" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="300" y="990" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-29" value="Передача данных" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="520" y="990" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-30" value="Форматирование данных" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="730" y="990" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-31" value="Источники данных" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1120" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-32" value="Внешние сервисы" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="740" y="1120" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=75;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-1" target="_KPcWchUeQN-RAS9eL70-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="445" />
+              <mxPoint x="220" y="445" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=92.5;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-3" target="_KPcWchUeQN-RAS9eL70-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=97.5;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-3" target="_KPcWchUeQN-RAS9eL70-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=285;entryDy=120;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-11" target="_KPcWchUeQN-RAS9eL70-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=97.5;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-8" target="_KPcWchUeQN-RAS9eL70-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=75;entryDy=14;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-15" target="_KPcWchUeQN-RAS9eL70-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=75;entryDy=14;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-15" target="_KPcWchUeQN-RAS9eL70-17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="765" />
+              <mxPoint x="485" y="765" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=75;entryDy=14;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-24" target="_KPcWchUeQN-RAS9eL70-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=75;entryDy=14;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-24" target="_KPcWchUeQN-RAS9eL70-26">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="765" />
+              <mxPoint x="815" y="765" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=132.5;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-19" target="_KPcWchUeQN-RAS9eL70-20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="773" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=337.5;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-27" target="_KPcWchUeQN-RAS9eL70-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=75;entryDy=14;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-27" target="_KPcWchUeQN-RAS9eL70-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=75;entryDy=14;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-27" target="_KPcWchUeQN-RAS9eL70-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=395;entryDy=30;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-19" target="_KPcWchUeQN-RAS9eL70-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_KPcWchUeQN-RAS9eL70-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.48;entryY=0.197;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="_KPcWchUeQN-RAS9eL70-12" target="_KPcWchUeQN-RAS9eL70-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
