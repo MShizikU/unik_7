@@ -1,9 +1,11 @@
-FROM openjdk:17-alpine
+FROM openjdk:21-jdk-slim
 
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y maven
+
 COPY pom.xml .
-RUN apk add --no-cache maven && mvn dependency:go-offline -B
+RUN mvn dependency:go-offline -B
 
 COPY src ./src
 

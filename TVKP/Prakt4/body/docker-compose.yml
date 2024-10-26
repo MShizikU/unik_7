@@ -5,9 +5,10 @@ services:
       context: ./prakt4
       dockerfile: Dockerfile
     environment:
-      POSTGRESQL_URL: ${POSTGRESQL_URL:-postgresql:5432/test}
-      POSTGRESQL_USERNAME: ${POSTGRESQL_USERNAME:-postgres}
-      POSTGRESQL_PASSWORD: ${POSTGRESQL_PASSWORD:-root}
+      DB_URL: jdbc:postgresql://postgres:5432/test
+      DB_USERNAME: postgres
+      DB_PASSWORD: root
+      GRAYLOG_URL: http://graylog:12201
     ports:
       - "8080:8080"
     depends_on:
@@ -16,19 +17,19 @@ services:
 
   postgres:
     container_name: postgres
-    image: postgres
+    image: postgres:15
     environment:
       POSTGRES_USER: ${POSTGRESQL_USERNAME:-postgres}
       POSTGRES_PASSWORD: ${POSTGRESQL_PASSWORD:-root}
       POSTGRES_DB: test
     volumes:
-      - ./monitoring/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./postgresql.conf:/etc/postgresql/postgresql.conf
       - postgres-logs:/var/log/postgresql
     command:
       - -c
       - config_file=/etc/postgresql/postgresql.conf
     ports:
-      - "5432:5432"
+      - "5435:5432"
     restart: on-failure
 
   postgres-exporter:
@@ -56,7 +57,7 @@ services:
     container_name: prometheus
     image: prom/prometheus
     volumes:
-      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
 
@@ -87,7 +88,7 @@ services:
   zabbix-web:
     image: zabbix/zabbix-web-apache-pgsql
     ports:
-      - "80:8080"
+      - "8082:8080"
     environment:
       DB_SERVER_HOST: postgres
       POSTGRES_USER: ${POSTGRESQL_USERNAME:-postgres}
