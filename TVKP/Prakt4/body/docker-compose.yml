@@ -8,7 +8,7 @@ services:
       DB_URL: jdbc:postgresql://postgres:5432/test
       DB_USERNAME: postgres
       DB_PASSWORD: root
-      GRAYLOG_URL: http://graylog:12201
+      GRAYLOG_URL: http://graylog:9000
     ports:
       - "8080:8080"
     depends_on:

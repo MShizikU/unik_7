@@ -35,9 +35,8 @@ public class GrayLogController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
         String url = UriComponentsBuilder.fromHttpUrl(graylogUrl + "/api/search/universal/absolute/export")
-                .queryParam("query", "")
+                .queryParam("query", "streams:000000000000000000000001")
                 .queryParam("fields", "timestamp,source,message")
-                .queryParam("streams", "000000000000000000000001")
                 .queryParam("from", fiveMinutesAgo.format(formatter))
                 .queryParam("to", now.format(formatter))
                 .toUriString();
