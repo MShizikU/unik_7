@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sidorov-ikbo-20-21
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sidorov-ikbo-20-21
+  template:
+    metadata:
+      labels:
+        app: sidorov-ikbo-20-21
+    spec:
+      containers:
+      - name: sidorov-ikbo-20-21-container
+        image: sidorov-ikbo-20-21-obraz
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
