@@ -1,0 +1,6 @@
+rootProject.name = 'prakt4'
+buildCache {
+    local {
+        enabled = true
+    }
+}

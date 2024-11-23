@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5438:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${DB_NAME}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      SPRING_RSOCKET_SERVER_PORT: ${RSOCKET_PORT}
+      SPRING_APPLICATION_NAME: ${SPRING_APP_NAME}
+    ports:
+      - "8085:8080"
+      - "${RSOCKET_PORT}:${RSOCKET_PORT}" # Порт для RSocket
+    depends_on:
+      - db
+
+volumes:
+  db_data:
