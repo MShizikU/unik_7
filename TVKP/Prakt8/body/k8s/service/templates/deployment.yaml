@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.serviceName }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.serviceName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.serviceName }}
+    spec:
+      containers:
+      - name: {{ .Values.serviceName }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 8080
+        env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:postgresql://{{ .Values.postgres.user }}:{{ .Values.postgres.password }}@{{ .Values.postgres.name }}:5432/{{ .Values.postgres.database }}
+          - name: SPRING_DATASOURCE_USERNAME
+            value: {{ .Values.postgres.user }}
+          - name: SPRING_DATASOURCE_PASSWORD
+            value: {{ .Values.postgres.password }}
+          - name: JAVA_OPTS
+            value: "-Xms1g -Xmx2g -XX:MaxMetaspaceSize=256m"
+        resources:
+            limits:
+              memory: "3Gi"
+              cpu: "2000m"
+            requests:
+              memory: "2Gi"
+              cpu: "2000m"
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 60  
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 60  
+          periodSeconds: 5

@@ -1,0 +1,59 @@
+{
+    "version": 3,
+    "name": "My API Gateway",
+    "port": 8080,
+    "cache_ttl": "3600s",
+    "timeout": "3000ms",
+    "extra_config": {},
+    "endpoints": [
+      {
+        "endpoint": "/auth/register",
+        "method": "POST",
+        "backend": [
+          {
+            "url_pattern": "/auth/register",
+            "host": [
+              "http://authservice:8080"
+            ]
+          }
+        ]
+      },
+      {
+        "endpoint": "/auth/login",
+        "method": "POST",
+        "backend": [
+          {
+            "url_pattern": "/auth/login",
+            "host": [
+              "http://authservice:8080"
+            ]
+          }
+        ]
+      },
+      {
+        "endpoint": "/payments/pay",
+        "method": "POST",
+        "backend": [
+          {
+            "url_pattern": "/payments/pay",
+            "host": [
+              "http://paymentservice:8080"
+            ]
+          }
+        ]
+      },
+      {
+        "endpoint": "/notifications",
+        "method": "GET",
+        "backend": [
+          {
+            "url_pattern": "/notifications",
+            "host": [
+              "http://notificationservice:8080"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

@@ -1,0 +1,16 @@
+<configuration>
+    <appender name="GELF" class="de.siegmar.logbackgelf.GelfUdpAppender">
+        <graylogHost>graylog.graylog.svc.cluster.local</graylogHost>
+        <graylogPort>12201</graylogPort>
+        <mdcProfiling>true</mdcProfiling>
+    </appender>
+
+    <logger name="org.springframework.web" level="INFO" additivity="false">
+        <appender-ref ref="GELF" />
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="GELF" />
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>
