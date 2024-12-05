@@ -2,6 +2,8 @@ package com.example.authservice.controller;
 
 import com.example.authservice.model.User;
 import com.example.authservice.service.AuthService;
+import io.opentracing.Span;
+import io.opentracing.Tracer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
@@ -29,14 +31,11 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User user) {
         User authenticatedUser = authService.authenticate(user.getUsername(), user.getPassword());
-        // Генерируем токен
         String token = UUID.randomUUID().toString();
-        // Сохраняем токен в Redis с временем жизни
         redisTemplate.opsForValue().set(token, authenticatedUser.getUsername(), 1, TimeUnit.HOURS);
         return ResponseEntity.ok(token);
     }
 
-    // Метод для проверки токена
     @GetMapping("/validate")
     public ResponseEntity<String> validateToken(@RequestParam String token) {
         String username = redisTemplate.opsForValue().get(token);

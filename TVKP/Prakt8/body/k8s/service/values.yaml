@@ -1,4 +1,5 @@
 namespace: authservice
+port: 8080
 
 serviceName: authservice
 

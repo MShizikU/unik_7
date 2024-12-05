@@ -17,8 +17,8 @@ public class LoggingFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        logger.info("Received request: method={}, uri={}, clientIp={}",
-                req.getMethod(), req.getRequestURI(), req.getRemoteAddr());
+        logger.info("Received request: method={}, uri={}, clientIp={}, service={}",
+                req.getMethod(), req.getRequestURI(), req.getRemoteAddr(), "Authentification Service");
         chain.doFilter(request, response);
     }
 }

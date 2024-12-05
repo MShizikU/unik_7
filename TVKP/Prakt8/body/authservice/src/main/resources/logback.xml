@@ -12,11 +12,33 @@
     </appender>
 
     <logger name="org.springframework.web" level="INFO" additivity="false">
-        <!-- <appender-ref ref="GELF" /> -->
+        <appender-ref ref="GELF" />
     </logger>
 
     <root level="INFO">
-        <!--<appender-ref ref="GELF" />-->
+        <appender-ref ref="GELF" />
         <appender-ref ref="CONSOLE" />
     </root>
+
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
+
+    <logger name="io.opentracing" level="DEBUG">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+    <logger name="io.jaegertracing" level="DEBUG">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+    <logger name="org.springframework.jdbc" level="DEBUG">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+    <logger name="io.opentracing.contrib.jdbc.TracingDataSource" level="DEBUG">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
+    <logger name="io.opentracing" level="DEBUG"/>
+    <logger name="io.opentracing.contrib.jdbc" level="DEBUG"/>
+    <logger name="io.jaeger" level="DEBUG"/>
+
+    <logger name="org.hibernate.SQL" level="DEBUG"/>
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
 </configuration>

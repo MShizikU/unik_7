@@ -21,18 +21,10 @@ data:
     global:
       scrape_interval: 15s
     scrape_configs:
-      - job_name: 'prometheus'
-        scrape_interval: 5s
-        static_configs:
-          - targets: ['localhost:9090']
-      - job_name: 'postgres-exporter-namespaceone'
-        scrape_interval: 15s
-        static_configs:
-          - targets: [<db-host>:<db-port>]
-      - job_name: 'postgres-exporter-namespacetwo'
-        scrape_interval: 15s
-        static_configs:
-          - targets: [<db-host>:<db-port>]
+        - job_name: 'postgres'
+          static_configs:
+            - targets: ['postgres-exporter.{{ .Values.namespace }}.svc.cluster.local:9187']
+
 ---
 apiVersion: apps/v1
 kind: Deployment

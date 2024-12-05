@@ -1,0 +1,156 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: krakend
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: krakend-config
+  namespace: krakend
+data:
+  krakend.json: |
+    {
+      "version": 3,
+      "name": "API Gateway",
+      "port": 8080,
+      "debug_endpoint": true,
+      "echo_endpoint": true,
+      "timeout": "3000ms",
+      "cache_ttl": "300s",
+      "output_encoding": "no-op",
+      "endpoints": [
+        {
+          "endpoint": "/api/auth/login",
+          "backend": [
+            {
+              "url_pattern": "/auth/login",
+              "host": [
+                "http://authservice.authservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true,
+              "encoding": "no-op",
+              "method": "POST"
+            }
+          ],
+          "input_query_strings": [],
+          "method": "POST",
+          "output_encoding": "no-op"
+        },
+        {
+          "endpoint": "/api/payments/pay",
+          "backend": [
+            {
+              "url_pattern": "/payments/pay",
+              "host": [
+                "http://paymentservice.paymentservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true,
+              "method": "POST",
+              "encoding": "no-op"
+            }
+          ],
+          "method": "POST"
+        },
+        {
+          "endpoint": "/api/notifications",
+          "backend": [
+            {
+              "url_pattern": "/notifications",
+              "host": [
+                "http://notificationservice.notificationservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true,
+              "method": "GET",
+              "encoding": "no-op"
+            }
+          ],
+          "method": "GET",
+          "output_encoding": "no-op"
+        },
+        {
+          "endpoint": "/api/auth/register",
+          "method": "POST",
+          "output_encoding": "no-op",
+          "backend": [
+            {
+              "url_pattern": "/auth/register",
+              "encoding": "no-op",
+              "sd": "static",
+              "method": "POST",
+              "host": [
+                "http://authservice.authservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/auth/validate",
+          "method": "GET",
+          "output_encoding": "no-op",
+          "input_query_strings": [
+              "token"
+          ],
+          "backend": [
+            {
+              "url_pattern": "/auth/validate",
+              "encoding": "no-op",
+              "sd": "static",
+              "method": "GET",
+              "host": [
+                "http://authservice.authservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true
+            }
+          ]
+        }
+      ]
+    }
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: krakend
+  namespace: krakend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: krakend
+  template:
+    metadata:
+      labels:
+        app: krakend
+    spec:
+      containers:
+        - name: krakend
+          image: devopsfaith/krakend:2.0
+          args:
+            - "run"
+            - "-c"
+            - "/etc/krakend/krakend.json"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: config
+              mountPath: /etc/krakend
+      volumes:
+        - name: config
+          configMap:
+            name: krakend-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: krakend-service
+  namespace: krakend
+spec:
+  selector:
+    app: krakend
+  ports:
+    - protocol: TCP
+      port: 8190
+      targetPort: 8080
+  type: LoadBalancer

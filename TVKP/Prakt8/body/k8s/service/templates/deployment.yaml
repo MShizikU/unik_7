@@ -19,30 +19,63 @@ spec:
         ports:
         - containerPort: 8080
         env:
-          - name: SPRING_DATASOURCE_URL
-            value: jdbc:postgresql://{{ .Values.postgres.user }}:{{ .Values.postgres.password }}@{{ .Values.postgres.name }}:5432/{{ .Values.postgres.database }}
-          - name: SPRING_DATASOURCE_USERNAME
-            value: {{ .Values.postgres.user }}
-          - name: SPRING_DATASOURCE_PASSWORD
-            value: {{ .Values.postgres.password }}
-          - name: JAVA_OPTS
-            value: "-Xms1g -Xmx2g -XX:MaxMetaspaceSize=256m"
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:postgresql://{{ .Values.postgres.name }}.{{ .Values.namespace }}.svc.cluster.local:5432/{{ .Values.postgres.database }}
+        - name: SPRING_DATASOURCE_USERNAME
+          value: {{ .Values.postgres.user }}
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: {{ .Values.postgres.password }}
+        - name: JAVA_OPTS
+          value: "-Xms1g -Xmx2g -XX:MaxMetaspaceSize=256m"
         resources:
-            limits:
-              memory: "3Gi"
-              cpu: "2000m"
-            requests:
-              memory: "2Gi"
-              cpu: "2000m"
+          requests:
+            memory: "600Mi"
+            cpu: "600m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
         livenessProbe:
           httpGet:
             path: /actuator/health
             port: 8080
-          initialDelaySeconds: 60  
-          periodSeconds: 5
+          initialDelaySeconds: 60
+          periodSeconds: 60
         readinessProbe:
           httpGet:
             path: /actuator/health
             port: 8080
-          initialDelaySeconds: 60  
-          periodSeconds: 5
+          initialDelaySeconds: 60
+          periodSeconds: 60
+        startupProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          failureThreshold: 30
+          periodSeconds: 10
+      restartPolicy: Always
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ .Values.serviceName }}
+  namespace: {{ .Values.namespace }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ .Values.serviceName }}
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 60
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 60

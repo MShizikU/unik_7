@@ -5,6 +5,8 @@ import com.example.notificationservice.repository.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class NotificationService {
 
@@ -15,6 +17,10 @@ public class NotificationService {
         Notification notification = new Notification();
         notification.setMessage(message);
         notificationRepository.save(notification);
+    }
+
+    public List<Notification> getAllNotifications() {
+        return notificationRepository.findAll();
     }
 }
 

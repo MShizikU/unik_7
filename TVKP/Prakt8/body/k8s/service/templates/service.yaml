@@ -4,10 +4,10 @@ metadata:
   name: {{ .Values.serviceName }}
   namespace: {{ .Values.namespace }}
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: {{ .Values.serviceName }}
   ports:
     - protocol: TCP
-      port: 80
+      port: {{ .Values.port}}
       targetPort: 8080

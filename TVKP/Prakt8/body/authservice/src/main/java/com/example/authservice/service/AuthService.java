@@ -2,6 +2,8 @@ package com.example.authservice.service;
 
 import com.example.authservice.model.User;
 import com.example.authservice.repository.UserRepository;
+import io.opentracing.Span;
+import io.opentracing.Tracer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +28,7 @@ public class AuthService {
         if (user != null && passwordEncoder.matches(password, user.getPassword())) {
             return user;
         } else {
-            throw new RuntimeException("Invalid credentials");
+            throw null;
         }
     }
 }

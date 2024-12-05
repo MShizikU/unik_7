@@ -12,7 +12,7 @@ public class RedisConfig {
 
     @Bean
     public LettuceConnectionFactory redisConnectionFactory() {
-        return new LettuceConnectionFactory("redis-master.redis.svc.cluster.local", 6379);
+        return new LettuceConnectionFactory("redis-master.redis.svc.cluster.local", 6379); //redis-master.redis.svc.cluster.local
     }
 
     @Bean
