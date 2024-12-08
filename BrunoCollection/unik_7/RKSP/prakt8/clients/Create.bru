@@ -1,0 +1,18 @@
+meta {
+  name: Create
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8090/clients
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name" : "Stas",
+    "email" : "sidorovstasd7@gmail.com"
+  }
+}
