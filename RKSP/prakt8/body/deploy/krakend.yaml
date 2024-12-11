@@ -1,0 +1,262 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: krakend
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: krakend-config
+  namespace: krakend
+data:
+  krakend.json: |
+    {
+      "version": 3,
+      "name": "API Gateway",
+      "port": 8080,
+      "debug_endpoint": true,
+      "echo_endpoint": true,
+      "timeout": "3000ms",
+      "cache_ttl": "300s",
+      "output_encoding": "no-op",
+      "endpoints": [
+        {
+          "endpoint": "/api/auth/login",
+          "backend": [
+            {
+              "url_pattern": "/",
+              "host": [
+                "http://authservice.authservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true,
+              "method": "GET",
+              "encoding": "no-op"
+            }
+          ],
+          "method": "GET",
+          "output_encoding": "no-op"
+        },
+        {
+          "endpoint": "/api/auth/login-success",
+          "backend": [
+            {
+              "url_pattern": "/auth/login-success",
+              "host": [
+                "http://authservice.authservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true,
+              "method": "GET",
+              "encoding": "no-op"
+            }
+          ],
+          "method": "GET",
+          "output_encoding": "no-op"
+        },
+        {
+          "endpoint": "/api/auth/validate",
+          "backend": [
+            {
+              "url_pattern": "/auth/validate",
+              "host": [
+                "http://authservice.authservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true,
+              "method": "GET",
+              "encoding": "no-op"
+            }
+          ],
+          "method": "GET",
+          "output_encoding": "no-op"
+        },
+        {
+          "endpoint": "/api/clients",
+          "backend": [
+            {
+              "url_pattern": "/clients",
+              "host": [
+                "http://clientservice.clientservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true,
+              "method": "GET",
+              "encoding": "no-op"
+            }
+          ],
+          "method": "GET",
+          "output_encoding": "no-op"
+        },
+        {
+          "endpoint": "/api/clients/{id}",
+          "backend": [
+            {
+              "url_pattern": "/clients/{id}",
+              "host": [
+                "http://clientservice.clientservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true,
+              "method": "GET",
+              "encoding": "no-op"
+            }
+          ],
+          "method": "GET",
+          "output_encoding": "no-op"
+        },
+        {
+          "endpoint": "/api/clients",
+          "backend": [
+            {
+              "url_pattern": "/clients",
+              "host": [
+                "http://clientservice.clientservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true,
+              "method": "POST",
+              "encoding": "no-op"
+            }
+          ],
+          "method": "POST",
+          "output_encoding": "no-op"
+        },
+        {
+          "endpoint": "/api/clients/{id}",
+          "backend": [
+            {
+              "url_pattern": "/clients/{id}",
+              "host": [
+                "http://clientservice.clientservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true,
+              "method": "PUT",
+              "encoding": "no-op"
+            }
+          ],
+          "method": "PUT",
+          "output_encoding": "no-op"
+        },
+        {
+          "endpoint": "/api/clients/{id}",
+          "backend": [
+            {
+              "url_pattern": "/clients/{id}",
+              "host": [
+                "http://clientservice.clientservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true,
+              "method": "DELETE",
+              "encoding": "no-op"
+            }
+          ],
+          "method": "DELETE",
+          "output_encoding": "no-op"
+        },
+        {
+          "endpoint": "/api/payments",
+          "backend": [
+            {
+              "url_pattern": "/payments",
+              "host": [
+                "http://paymentservice.paymentservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true,
+              "method": "GET",
+              "encoding": "no-op"
+            }
+          ],
+          "method": "GET",
+          "output_encoding": "no-op"
+        },
+        {
+          "endpoint": "/api/payments",
+          "backend": [
+            {
+              "url_pattern": "/payments",
+              "host": [
+                "http://paymentservice.paymentservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true,
+              "method": "POST",
+              "encoding": "no-op"
+            }
+          ],
+          "method": "POST",
+          "output_encoding": "no-op"
+        },
+        {
+          "endpoint": "/api/payments/{id}",
+          "backend": [
+            {
+              "url_pattern": "/payments/{id}",
+              "host": [
+                "http://paymentservice.paymentservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true,
+              "method": "GET",
+              "encoding": "no-op"
+            }
+          ],
+          "method": "GET",
+          "output_encoding": "no-op"
+        },
+        {
+          "endpoint": "/api/payments/{id}",
+          "backend": [
+            {
+              "url_pattern": "/payments/{id}",
+              "host": [
+                "http://paymentservice.paymentservice.svc.cluster.local:8080"
+              ],
+              "disable_host_sanitize": true,
+              "method": "PUT",
+              "encoding": "no-op"
+            }
+          ],
+          "method": "PUT",
+          "output_encoding": "no-op"
+        }
+      ]
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: krakend
+  namespace: krakend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: krakend
+  template:
+    metadata:
+      labels:
+        app: krakend
+    spec:
+      containers:
+        - name: krakend
+          image: devopsfaith/krakend:2.0
+          args:
+            - "run"
+            - "-c"
+            - "/etc/krakend/krakend.json"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: config
+              mountPath: /etc/krakend
+      volumes:
+        - name: config
+          configMap:
+            name: krakend-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: krakend-service
+  namespace: krakend
+spec:
+  selector:
+    app: krakend
+  ports:
+    - protocol: TCP
+      port: 8090
+      targetPort: 8080
+  type: LoadBalancer

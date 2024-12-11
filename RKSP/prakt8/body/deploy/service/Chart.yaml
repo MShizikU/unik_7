@@ -1,0 +1,4 @@
+apiVersion: v2
+name: service
+description: A Helm chart for deploying a service with Postgres
+version: 0.1.0

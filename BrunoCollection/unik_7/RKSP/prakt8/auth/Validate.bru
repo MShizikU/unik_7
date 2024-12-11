@@ -1,0 +1,15 @@
+meta {
+  name: Validate
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:8095/auth/validate
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdGFzIiwianRpIjoiNDIyNGU3NzQtMmFmOS00NmM4LThjZjQtN2JkNzY2NTgyNzYwIiwiaWF0IjoxNzMzNzcwNjg2LCJleHAiOjE3MzM3Nzc4ODZ9.ikzV9bkLmim9Gu_plr2VjdkJviCPQg4M9u0DecyZsRPYnP1AUjbJA-oZYY1-55t_ot-AFIuYniDpl2LYxO1upQ
+}

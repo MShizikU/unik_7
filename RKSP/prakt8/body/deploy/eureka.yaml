@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eureka
+  namespace: eureka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eureka
+  template:
+    metadata:
+      labels:
+        app: eureka
+    spec:
+      containers:
+      - name: eureka
+        image: "mshizik/eureka:latest"
+        ports:
+        - containerPort: 8700
+        env:
+        - name: JAVA_OPTS
+          value: "-Xms1g -Xmx2g -XX:MaxMetaspaceSize=256m"
+        resources:
+          requests:
+            memory: "600Mi"
+            cpu: "600m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eureka
+  namespace: eureka
+spec:
+  type: LoadBalancer
+  selector:
+    app: eureka
+  ports:
+    - protocol: TCP
+      port: 8700
+      targetPort: 8700

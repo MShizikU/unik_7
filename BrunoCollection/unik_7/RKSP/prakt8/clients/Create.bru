@@ -7,12 +7,16 @@ meta {
 post {
   url: http://localhost:8090/clients
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: d5fd0c96-0555-4b32-b127-d48e109c0dcd
 }
 
 body:json {
   {
-    "name" : "Stas",
-    "email" : "sidorovstasd7@gmail.com"
+    "name" : "Stas2",
+    "email" : "sidorovstasdw@gmail.com"
   }
 }

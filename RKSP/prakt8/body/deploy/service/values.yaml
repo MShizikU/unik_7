@@ -1,0 +1,15 @@
+namespace: authservice
+port: 8080
+
+serviceName: authservice
+
+image:
+  repository: mshizik/authservice
+  tag: latest
+
+postgres:
+  image: postgres:15
+  name: authservice-db
+  database: authservice
+  user: postgres
+  password: postgres
