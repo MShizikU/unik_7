@@ -1,14 +1,12 @@
 package mirea.sidorov.auth.controller;
 
 import lombok.Data;
-import mirea.sidorov.auth.model.Token;
-import mirea.sidorov.auth.model.User;
-import mirea.sidorov.auth.service.TokenService;
-import mirea.sidorov.auth.service.UserService;
+import mirea.sidorov.auth.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -20,67 +18,30 @@ import java.util.Optional;
 public class AuthController {
 
     @Autowired
-    private UserService userService;
+    private AuthService authService;
 
-    @Autowired
-    private TokenService tokenService;
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
-        User user = userService.registerUser(request.getUsername(), request.getPassword());
-        return ResponseEntity.ok("User registered successfully");
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
-        authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
-        );
-        User user = userService.findByUsername(request.getUsername())
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        String jwt = tokenService.createToken(user);
-        return ResponseEntity.ok(new TokenResponse(jwt));
+    @GetMapping("/login-success")
+    public String loginSuccess(OAuth2AuthenticationToken authenticationToken) {
+        OAuth2User user = authenticationToken.getPrincipal();
+        return authService.generateToken(user);
     }
 
     @GetMapping("/validate")
     public ResponseEntity<?> validateToken(@RequestHeader("Authorization") String authorizationHeader) {
-        if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
-            return ResponseEntity.badRequest().body("Invalid Authorization header");
-        }
+        // Extract the token from the Authorization header
+        String token = authorizationHeader.replace("Bearer ", "");
 
-        String token = authorizationHeader.substring(7);
-        Optional<Token> tokenOpt = tokenService.validateToken(token);
-        if (tokenOpt.isPresent()) {
-            Token validToken = tokenOpt.get();
-            Map<String, Object> response = new HashMap<>();
-            response.put("username", validToken.getUser().getUsername());
-            return ResponseEntity.ok(response);
-        } else {
-            return ResponseEntity.status(401).body("Invalid or expired token");
-        }
-    }
-
-    @Data
-    static class RegisterRequest {
-        private String username;
-        private String password;
-    }
-
-    @Data
-    static class LoginRequest {
-        private String username;
-        private String password;
-    }
-
-    @Data
-    static class TokenResponse {
-        private String token;
-
-        public TokenResponse(String token) {
-            this.token = token;
-        }
+        // Validate the token
+        return authService.validateToken(token)
+                .map(validToken -> {
+                    Map<String, Object> response = new HashMap<>();
+                    response.put("username", validToken.getUsername());
+                    return ResponseEntity.ok(response);
+                })
+                .orElseGet(() ->{
+                    Map<String, Object> response = new HashMap<>();
+                    response.put("error", "invalid token");
+                    return ResponseEntity.status(401).body(response);
+                });
     }
 }

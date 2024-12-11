@@ -1,0 +1,15 @@
+meta {
+  name: Auth
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8090/auth/validate
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: 713c26d1-d957-4903-b97a-6338bfa24c33
+}
