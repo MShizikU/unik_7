@@ -5,14 +5,18 @@ meta {
 }
 
 post {
-  url: http://localhost:8082/payments
+  url: {{rksp_8_url}}/api/payments
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{rksp_8_token}}
 }
 
 body:json {
   {
     "amount": 12.05,
-    "clientId": 2
+    "clientId": 1
   }
 }

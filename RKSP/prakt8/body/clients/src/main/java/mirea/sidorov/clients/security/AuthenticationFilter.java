@@ -53,24 +53,24 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
     public Authentication attemptAuthentication(HttpServletRequest request) throws Exception {
         String token = extractToken(request);
-
+        log.info("HEaders: {}", request.getHeaderNames());
         if (token != null) {
             try {
                 String bearerToken = "Bearer " + token;
                 ResponseEntity<String> sourceResponseEntity = authServiceClient.validateToken(bearerToken);
+                log.info(sourceResponseEntity.getBody());
 
                 if (sourceResponseEntity.getStatusCode() == HttpStatus.OK && sourceResponseEntity.getBody() != null) {
                     Authentication authentication = AuthentificationConverter.convert(sourceResponseEntity.getBody(), token);
                     return authentication;
                 } else {
-                    throw new Exception("User unauthorized");
+                    throw new Exception("User unauthorized 0 " + token);
                 }
             } catch (Exception e) {
-                throw new Exception("User unauthorized", e);
+                throw new Exception("User unauthorized 1 " + token, e);
             }
         }
-
-        throw new Exception("User unauthorized");
+        throw new Exception("User unauthorized 2 " + token);
     }
 
     /**

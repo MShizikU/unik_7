@@ -5,18 +5,22 @@ meta {
 }
 
 post {
-  url: http://localhost:8090/clients
+  url: {{rksp_8_url}}/api/clients
   body: json
   auth: bearer
 }
 
+headers {
+  Content-Type: application/json
+}
+
 auth:bearer {
-  token: d5fd0c96-0555-4b32-b127-d48e109c0dcd
+  token: {{rksp_8_token}}
 }
 
 body:json {
   {
-    "name" : "Stas2",
-    "email" : "sidorovstasdw@gmail.com"
+    "name" : "Stas",
+    "email" : "sidorovstasdw@gmail.con"
   }
 }

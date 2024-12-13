@@ -1,0 +1,11 @@
+meta {
+  name: auth
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://authservice.authservice.svc.cluster.local:8090/auth/validate
+  body: none
+  auth: none
+}

@@ -1,0 +1,172 @@
+{
+    "version": 3,
+    "name": "API Gateway",
+    "port": 8080,
+    "debug_endpoint": true,
+    "echo_endpoint": true,
+    "timeout": "3000ms",
+    "cache_ttl": "300s",
+    "output_encoding": "no-op",
+    "extra_config": {
+      "github.com/devopsfaith/krakend/proxy": {
+        "headers_to_pass": [
+          "Authorization",
+          "Content-Type"
+        ]
+      }
+    },
+    "endpoints": [
+      {
+        "endpoint": "/api/clients",
+        "backend": [
+          {
+            "url_pattern": "/clients",
+            "host": [
+              "http://clientservice.clientservice.svc.cluster.local:8080"
+            ],
+            "disable_host_sanitize": true,
+            "method": "GET",
+            "encoding": "no-op",
+            "extra_config": {
+              "github.com/devopsfaith/krakend/proxy": {
+                "headers_to_pass": [
+                  "Authorization",
+                  "Content-Type"
+                ]
+              }
+            }
+          }
+        ],
+        "method": "GET",
+        "output_encoding": "no-op"
+      },
+      {
+        "endpoint": "/api/clients/{id}",
+        "backend": [
+          {
+            "url_pattern": "/clients/{id}",
+            "host": [
+              "http://clientservice.clientservice.svc.cluster.local:8080"
+            ],
+            "disable_host_sanitize": true,
+            "method": "GET",
+            "encoding": "no-op"
+          }
+        ],
+        "method": "GET",
+        "output_encoding": "no-op"
+      },
+      {
+        "endpoint": "/api/clients",
+        "backend": [
+          {
+            "url_pattern": "/clients",
+            "host": [
+              "http://clientservice.clientservice.svc.cluster.local:8080"
+            ],
+            "disable_host_sanitize": true,
+            "method": "POST",
+            "encoding": "no-op"
+          }
+        ],
+        "method": "POST",
+        "output_encoding": "no-op"
+      },
+      {
+        "endpoint": "/api/clients/{id}",
+        "backend": [
+          {
+            "url_pattern": "/clients/{id}",
+            "host": [
+              "http://clientservice.clientservice.svc.cluster.local:8080"
+            ],
+            "disable_host_sanitize": true,
+            "method": "PUT",
+            "encoding": "no-op"
+          }
+        ],
+        "method": "PUT",
+        "output_encoding": "no-op"
+      },
+      {
+        "endpoint": "/api/clients/{id}",
+        "backend": [
+          {
+            "url_pattern": "/clients/{id}",
+            "host": [
+              "http://clientservice.clientservice.svc.cluster.local:8080"
+            ],
+            "disable_host_sanitize": true,
+            "method": "DELETE",
+            "encoding": "no-op"
+          }
+        ],
+        "method": "DELETE",
+        "output_encoding": "no-op"
+      },
+      {
+        "endpoint": "/api/payments",
+        "backend": [
+          {
+            "url_pattern": "/payments",
+            "host": [
+              "http://paymentservice.paymentservice.svc.cluster.local:8080"
+            ],
+            "disable_host_sanitize": true,
+            "method": "GET",
+            "encoding": "no-op"
+          }
+        ],
+        "method": "GET",
+        "output_encoding": "no-op"
+      },
+      {
+        "endpoint": "/api/payments",
+        "backend": [
+          {
+            "url_pattern": "/payments",
+            "host": [
+              "http://paymentservice.paymentservice.svc.cluster.local:8080"
+            ],
+            "disable_host_sanitize": true,
+            "method": "POST",
+            "encoding": "no-op"
+          }
+        ],
+        "method": "POST",
+        "output_encoding": "no-op"
+      },
+      {
+        "endpoint": "/api/payments/{id}",
+        "backend": [
+          {
+            "url_pattern": "/payments/{id}",
+            "host": [
+              "http://paymentservice.paymentservice.svc.cluster.local:8080"
+            ],
+            "disable_host_sanitize": true,
+            "method": "GET",
+            "encoding": "no-op"
+          }
+        ],
+        "method": "GET",
+        "output_encoding": "no-op"
+      },
+      {
+        "endpoint": "/api/payments/{id}",
+        "backend": [
+          {
+            "url_pattern": "/payments/{id}",
+            "host": [
+              "http://paymentservice.paymentservice.svc.cluster.local:8080"
+            ],
+            "disable_host_sanitize": true,
+            "method": "PUT",
+            "encoding": "no-op"
+          }
+        ],
+        "method": "PUT",
+        "output_encoding": "no-op"
+      }
+    ]
+  }

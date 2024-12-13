@@ -1,3 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: config-server
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,7 +20,7 @@ spec:
     spec:
       containers:
       - name: config-server
-        image: "mshizik/config-server:latest"
+        image: "mshizik/config:latest"
         ports:
         - containerPort: 8888
         env:
